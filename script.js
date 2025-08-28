@@ -1,9 +1,46 @@
-console.log("alerrrt");
-
 let choices = ["rock", "paper", "scissor"]
+let humanPoints = 0;
+let computerPoints = 0;
+let gameRound = 1;
+
+console.log("Human Points: ", humanPoints);
+console.log("Computer Points: ", computerPoints);
+
+pointCounter();
 
 
-getOutcome(getHumanChoice(), getComputerChoice());
+function pointCounter(){
+    gameRoundNumber = console.log(`Round Number ${gameRound++}`)
+    let outcome = getOutcome(getHumanChoice(), getComputerChoice());
+    let announcePrompt 
+    
+    if(outcome === "win"){
+        humanPoints++;
+        announcePrompt = "You Win!"
+    } else 
+    if (outcome === "lose"){
+        computerPoints++
+        announcePrompt = "Computer Wins!"
+    } else {announcePrompt = "Meh"} 
+
+    console.log(announcePrompt);
+    console.log("Human Points: ", humanPoints);
+    console.log("Computer Points: ", computerPoints);
+    console.log(`~~~~~~~~~~~~~~~~~~~~~~~~`);
+    continueGame();
+}
+
+
+function continueGame() {
+    if(confirm("Press 'OK' to continue...")) {pointCounter()};
+
+}
+
+
+
+
+
+
 
 function getOutcome(human, computer) {
     let annouceOutcome;
@@ -24,12 +61,9 @@ function getOutcome(human, computer) {
 
     else {annouceOutcome = "Invalid choice"}
 
-    console.log(human);
-    console.log(computer);
-    return console.log(annouceOutcome);
+    console.log(`[You] ${human} ⚔️ ${computer} [Comp]`);
+    return annouceOutcome;
 }
-
-
 
 
 
